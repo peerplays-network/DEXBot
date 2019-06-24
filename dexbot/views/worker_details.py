@@ -1,4 +1,5 @@
 import os
+import importlib
 
 from dexbot.controllers.worker_details_controller import WorkerDetailsController
 from dexbot.helper import get_user_data_directory
@@ -6,14 +7,12 @@ from dexbot.views.ui.worker_details_window_ui import Ui_details_dialog
 from dexbot.views.ui.tabs.graph_tab_ui import Ui_Graph_Tab
 from dexbot.views.ui.tabs.table_tab_ui import Ui_Table_Tab
 from dexbot.views.ui.tabs.text_tab_ui import Ui_Text_Tab
+from dexbot.views.ui.tabs.web_tab_ui import UiWebTab
 
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QWidget
-
-import importlib
+from PyQt5.QtWidgets import QWidget, QDialog
 
 
-class WorkerDetailsView(QtWidgets.QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, Ui_Text_Tab):
+class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, Ui_Text_Tab, UiWebTab):
 
     def __init__(self, worker_name, config):
         super().__init__()
@@ -54,8 +53,24 @@ class WorkerDetailsView(QtWidgets.QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_T
                 widget = self.add_table_tab(detail, widget)
             elif detail.type == 'text':
                 widget = self.add_text_tab(detail, widget)
+            elif detail.type == 'web':
+                widget = self.add_web_tab(detail, widget)
 
             self.tabs_widget.addTab(widget, detail.name)
+
+    def add_web_tab(self, detail, widget):
+
+        # Fixme: Change this url, only for testing purpose, maybe something like base_url + worker_name?
+        url = 'http://127.0.0.1:8050/'
+
+        tab = UiWebTab()
+        tab.setup_ui(widget, url)
+
+        if detail.file:
+            file = os.path.join(get_user_data_directory(), 'graphs', detail.file)
+            tab.table = self.controller.add_graph(tab, file)
+
+        return widget
 
     def add_graph_tab(self, detail, widget):
         tab = Ui_Graph_Tab()

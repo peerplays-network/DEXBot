@@ -1,4 +1,4 @@
-from dexbot.strategies.config_parts.base_config import BaseConfig, ConfigElement
+from dexbot.strategies.config_parts.base_config import BaseConfig, ConfigElement, DetailElement
 
 
 class StaggeredConfig(BaseConfig):
@@ -68,4 +68,6 @@ class StaggeredConfig(BaseConfig):
 
     @classmethod
     def configure_details(cls, include_default_tabs=True):
-        return BaseConfig.configure_details(include_default_tabs) + []
+        return BaseConfig.configure_details(include_default_tabs) + [
+            DetailElement('web', 'Web', 'Web', '')
+        ]
