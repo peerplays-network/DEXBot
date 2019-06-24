@@ -7,7 +7,7 @@ from dexbot.views.ui.worker_details_window_ui import Ui_details_dialog
 from dexbot.views.ui.tabs.graph_tab_ui import Ui_Graph_Tab
 from dexbot.views.ui.tabs.table_tab_ui import Ui_Table_Tab
 from dexbot.views.ui.tabs.text_tab_ui import Ui_Text_Tab
-from dexbot.views.ui.tabs.web_tab_ui import UiWebTab
+from dexbot.views.ui.tabs.web_tab import WebTab
 
 from PyQt5.QtWidgets import QWidget, QDialog
 
