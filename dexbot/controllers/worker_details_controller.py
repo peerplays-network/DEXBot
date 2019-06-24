@@ -32,15 +32,14 @@ class WorkerDetailsController:
         self.view.fee_asset.setText(self.config.get('fee_asset'))
 
     def add_graph(self, tab, file):
-        pass
-        # # Fixme: If there is better way to print an image and scale it, fix this
-        # if os.path.isfile(file):
-        #     tab.graph.setHtml('<img src=\'{}\'/>'.format(file))
-        #     self.status_file_loaded(tab, file)
-        # else:
-        #     self.status_file_not_found(tab, file)
+        # Fixme: If there is better way to print an image and scale it, fix this
+        if os.path.isfile(file):
+            tab.graph.setHtml('<img src=\'{}\'/>'.format(file))
+            self.status_file_loaded(tab, file)
+        else:
+            self.status_file_not_found(tab, file)
 
-        # return tab.graph
+        return tab.graph
 
     def populate_table_from_csv(self, tab, file, delimiter=';', first_item_header=True):
         try:
@@ -85,12 +84,10 @@ class WorkerDetailsController:
 
     @staticmethod
     def status_file_not_found(tab, file):
-        pass
-        # tab.status_label.setStyleSheet('color: red;')
-        # return tab.status_label.setText('File \'{}\' not found'.format(file))
+        tab.status_label.setStyleSheet('color: red;')
+        return tab.status_label.setText('File \'{}\' not found'.format(file))
 
     @staticmethod
     def status_file_loaded(tab, file):
-        pass
-        # tab.status_label.setStyleSheet('')
-        # return tab.status_label.setText('File \'{}\' loaded'.format(file))
+        tab.status_label.setStyleSheet('')
+        return tab.status_label.setText('File \'{}\' loaded'.format(file))

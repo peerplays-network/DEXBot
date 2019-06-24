@@ -69,5 +69,5 @@ class StaggeredConfig(BaseConfig):
     @classmethod
     def configure_details(cls, include_default_tabs=True):
         return BaseConfig.configure_details(include_default_tabs) + [
-            DetailElement('web', 'Web', 'Web', '')
+            DetailElement('web', 'Statistics', '', '')
         ]

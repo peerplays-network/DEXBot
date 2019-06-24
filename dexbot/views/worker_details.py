@@ -54,21 +54,23 @@ class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, 
             elif detail.type == 'text':
                 widget = self.add_text_tab(detail, widget)
             elif detail.type == 'web':
-                widget = self.add_web_tab(detail, widget)
+                widget = self.add_web_tab(widget)
 
             self.tabs_widget.addTab(widget, detail.name)
 
-    def add_web_tab(self, detail, widget):
+    def add_web_tab(self, widget):
+        """ Creates a web view to details. Opens URL inside the tab.
+            Todo: Add documentation
+            Fixme: Get a better way to load the per worker data, unless data is behind url + worker_data or something.
+                   For now it only opens the default page for sake of testing.
 
-        # Fixme: Change this url, only for testing purpose, maybe something like base_url + worker_name?
-        url = 'http://127.0.0.1:8050/'
+            :param widget:
+            :return:
+        """
 
         tab = WebTab()
+        url = 'http://127.0.0.1:8050/'
         tab.setup_ui(widget, url)
-
-        if detail.file:
-            file = os.path.join(get_user_data_directory(), 'graphs', detail.file)
-            tab.table = self.controller.add_graph(tab, file)
 
         return widget
 

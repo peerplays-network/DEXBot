@@ -70,7 +70,8 @@ def server():
         )
     ])
 
-    dash_app.run_server()
+    # Todo: Remove debug
+    dash_app.run_server(debug=True)
 
 
 server_thread = threading.Thread(target=server)

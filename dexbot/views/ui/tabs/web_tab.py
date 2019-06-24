@@ -1,5 +1,5 @@
 from PyQt5.QtCore import QMetaObject, QUrl
-from PyQt5.QtWidgets import QVBoxLayout, QGroupBox
+from PyQt5.QtWidgets import QVBoxLayout
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 
 
@@ -16,13 +16,11 @@ class WebTab(object):
 
         self.verticalLayout = QVBoxLayout(web_tab)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.graph_wrap = QGroupBox(web_tab)
-        self.graph_wrap.setTitle("")
 
-        self.web_view.load(QUrl(url))
-
+        self.load_url(url)
         self.verticalLayout.addWidget(self.web_view)
 
         QMetaObject.connectSlotsByName(web_tab)
 
-
+    def load_url(self, url):
+        self.web_view.load(QUrl(url))
