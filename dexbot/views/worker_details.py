@@ -7,12 +7,12 @@ from dexbot.views.ui.worker_details_window_ui import Ui_details_dialog
 from dexbot.views.ui.tabs.graph_tab_ui import Ui_Graph_Tab
 from dexbot.views.ui.tabs.table_tab_ui import Ui_Table_Tab
 from dexbot.views.ui.tabs.text_tab_ui import Ui_Text_Tab
-from dexbot.views.ui.tabs.web_tab_ui import UiWebTab
+from dexbot.views.ui.tabs.web_tab import WebTab
 
 from PyQt5.QtWidgets import QWidget, QDialog
 
 
-class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, Ui_Text_Tab, UiWebTab):
+class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, Ui_Text_Tab, WebTab):
 
     def __init__(self, worker_name, config):
         super().__init__()
@@ -63,7 +63,7 @@ class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, 
         # Fixme: Change this url, only for testing purpose, maybe something like base_url + worker_name?
         url = 'http://127.0.0.1:8050/'
 
-        tab = UiWebTab()
+        tab = WebTab()
         tab.setup_ui(widget, url)
 
         if detail.file:
