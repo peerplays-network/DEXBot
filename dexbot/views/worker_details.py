@@ -19,9 +19,11 @@ class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, 
 
         self.config = config['workers'].get(worker_name)
 
+        # Build URL localhost + account + worker_name
+        self.url = 'http://127.0.0.1:8050/{}/{}'.format(self.config.get('account'), worker_name)
+
         # Initialize view controller
         self.controller = WorkerDetailsController(self, worker_name, self.config)
-
         self.setupUi(self)
 
         # Add worker's name to the dialog title
@@ -61,16 +63,13 @@ class WorkerDetailsView(QDialog, Ui_details_dialog, Ui_Graph_Tab, Ui_Table_Tab, 
     def add_web_tab(self, widget):
         """ Creates a web view to details. Opens URL inside the tab.
             Todo: Add documentation
-            Fixme: Get a better way to load the per worker data, unless data is behind url + worker_data or something.
-                   For now it only opens the default page for sake of testing.
 
             :param widget:
             :return:
         """
 
         tab = WebTab()
-        url = 'http://127.0.0.1:8050/'
-        tab.setup_ui(widget, url)
+        tab.setup_ui(widget, self.url)
 
         return widget
 
