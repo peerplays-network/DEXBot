@@ -154,6 +154,7 @@ def server():
     def get_orders(df,account,base_asset):
 
         # Todo: create an if-statement to check whether the order is a current_order or initial_order
+        # Todo: create an if-statement to check whether the order['price'] == market price, if so, append white color
         for order in account.openorders:
             if order['for_sale']['symbol'] == base_asset: # if the asset that you sell is equal to base asset, it's a buy order
                 df = df.append({'price':round(order['price'],3),
@@ -169,11 +170,11 @@ def server():
         # sort values in dataframe by price to get mountain type visualization
         df = df.sort_values(by=['price']) # print(df.sort_values(by=['price']))
 
-        # Get center price (middle row in dataframe is df.loc[ 0 , : ])
-        # Todo: add center price (market price) + fictional order size which is bigger than highest sell and buy order size
+        # Get fixed center price (middle row in dataframe is df.loc[ 0 , : ])
+        # Fixme: center price = market price and use most recent order size as order size for bar height
         cp = df.loc[ 0 , : ]['price']
 
-        # Adjust bar_colors_initial for center price (so it becomes white)
+        # Todo: Adjust bar_colors_initial for center price/market price
         df.at[ 0 , 'bar_colors_initial'] = 'rgba(217,217,217,0.5)'
 
         # Todo: this may be needed in case the update of storing orders in db is done
