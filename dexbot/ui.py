@@ -53,19 +53,22 @@ def verbose(f):
             # By default, log to a user data dir
             data_dir = user_data_dir(APP_NAME, AUTHOR)
             filename = os.path.join(data_dir, 'dexbot.log')
-        # Print logfile using main logger
-        logging.getLogger("dexbot").info('Dexbot version {}, logfile: {}'.format(VERSION, filename))
 
         fh = logging.FileHandler(filename)
         fh.setFormatter(formatter2)
         logger.addHandler(fh)
 
         logger.propagate = False  # Don't double up with root logger
-        # Set the root logger with basic format
+        # Configure root logger
+        root_logger = logging.getLogger("dexbot")
         ch = logging.StreamHandler()
         ch.setFormatter(formatter1)
-        logging.getLogger("dexbot").addHandler(ch)
+        root_logger.addHandler(ch)
+        root_logger.setLevel(getattr(logging, verbosity.upper()))
         logging.getLogger("").handlers = []
+
+        # Print logfile using main logger
+        root_logger.info('Dexbot version {}, logfile: {}'.format(VERSION, filename))
 
         # GrapheneAPI logging
         if ctx.obj["verbose"] > 4:
@@ -110,6 +113,8 @@ def unlock(f):
             if ctx.bitshares.wallet.created():
                 if "UNLOCK" in os.environ:
                     pwd = os.environ["UNLOCK"]
+                    if pwd[:12] == "/run/secrets":
+                        pwd = open(pwd).read()
                 else:
                     if systemd:
                         # No user available to interact with

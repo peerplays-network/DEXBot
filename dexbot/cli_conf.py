@@ -36,9 +36,14 @@ STRATEGIES = [
      'name': 'Relative Orders'},
     {'tag': 'stagger',
      'class': 'dexbot.strategies.staggered_orders',
-     'name': 'Staggered Orders'}]
+     'name': 'Staggered Orders'},
+    {'tag': 'koth',
+     'class': 'dexbot.strategies.king_of_the_hill',
+     'name': 'King of the Hill'},
+]
 
-tags_so_far = {'stagger', 'relative'}
+# Todo: tags must be unique. Are they really a tags?
+tags_so_far = [strategy['tag'] for strategy in STRATEGIES]
 for desc, module in dexbot.helper.find_external_strategies():
     tag = desc.split()[0].lower()
     # make sure tag is unique
@@ -308,6 +313,7 @@ def configure_dexbot(config, ctx):
                  ('SHOW', 'Show bitshares accounts'),
                  ('NODES', 'Edit Node Selection'),
                  ('ADD_NODE', 'Add Your Node'),
+                 ('DEL_NODE', 'Delete A Node'),
                  ('HELP', 'Where to get help'),
                  ('EXIT', 'Quit this application')])
 
@@ -377,6 +383,14 @@ def configure_dexbot(config, ctx):
                 # Move selected node as first item in the config file's node list
                 config['node'].remove(choice)
                 config['node'].insert(0, choice)
+                setup_systemd(whiptail, config)
+            elif action == 'DEL_NODE':
+                choice = whiptail.node_radiolist(
+                    msg="Choose node to delete",
+                    items=select_choice(config['node'][0],
+                                        [(index, index) for index in config['node']]))
+                config['node'].remove(choice)
+                # delete node permanently from config
                 setup_systemd(whiptail, config)
             elif action == 'HELP':
                 whiptail.alert("Please see https://github.com/Codaone/DEXBot/wiki")
