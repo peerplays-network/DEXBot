@@ -19,7 +19,7 @@ h1 {
 h2 {
   font-weight: 200;
   font-size: 0.9em;
-  margin: 0 0 50px;
+  /* margin: 0 0 50px; */
   color: #999;
 }
 
@@ -27,4 +27,8 @@ a {
   margin-top: 50px;
   display: block;
   color: #3e95cd;
+}
+
+._dash-undo-redo {
+  display: none;
 }

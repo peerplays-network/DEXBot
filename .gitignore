@@ -91,3 +91,4 @@ archive
 
 # Bandit config
 !bandit.yml
+test.csv
