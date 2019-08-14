@@ -17,6 +17,8 @@ import plotly.graph_objs as go
 import pandas as pd
 from PyQt5.QtWidgets import QApplication
 
+import math
+
 
 class App(QApplication):
     def __init__(self, sys_argv):
@@ -52,7 +54,7 @@ def server():
         html.H1(children='Staggered Orders Overview'),
         html.H2(children='A mountain based visualisation of (base asset/quote asset)'),
         # Fixme: Button's layout is inherited in some bad way because it looks good in browser
-        html.Button(id='submit-button', n_clicks=0, children='Switch'),
+        html.Button(id='button', n_clicks=0, children='Switch'),
         html.Div(id='output-graph'),
 
         # Represents the URL bar, doesn't render anything
@@ -61,7 +63,7 @@ def server():
     ])
 
     @dash_app.callback(Output('output-graph', 'children'),
-                       [Input('submit-button', 'n_clicks'),
+                       [Input('button', 'n_clicks'),
                         Input('url','pathname')])
     def display_page(n_clicks,pathname):
 
@@ -90,7 +92,8 @@ def server():
             base_asset = worker_market[1]
             quote_asset = worker_market[0]
 
-            df = pd.DataFrame({'price':[],
+            df = pd.DataFrame({'label':[],
+                               'price':[],
                                'order_size':[],
                                'current_orders':[],
                                'initial_orders':[],
@@ -154,28 +157,41 @@ def server():
     def get_orders(df,account,base_asset):
 
         # Todo: create an if-statement to check whether the order is a current_order or initial_order
-        # Todo: create an if-statement to check whether the order['price'] == market price, if so, append white color
         for order in account.openorders:
             if order['for_sale']['symbol'] == base_asset: # if the asset that you sell is equal to base asset, it's a buy order
-                df = df.append({'price':round(order['price'],3),
+                df = df.append({'label':'buy',
+                                'price':round(order['price'],3),
                                 'order_size':float(order['base']['amount']*order['price']),
                                 'bar_colors_initial':'rgba(58, 98, 87, 0.5)'},ignore_index=True)
 
             else: # otherwise it's a sell order
                 price = round(float(order['quote']['amount'])/float(order['base']['amount']),3)
 
-                df = df.append({'price':price,'order_size':float(order['base']['amount']*order['price']),
+                df = df.append({'label':'sell',
+                                'price':price,
+                                'order_size':float(order['base']['amount']*order['price']),
                                 'bar_colors_initial':'rgba(230, 0, 0, 0.5)'},ignore_index=True)
 
-        # sort values in dataframe by price to get mountain type visualization
-        df = df.sort_values(by=['price']) # print(df.sort_values(by=['price']))
+        # set label (sell or buy) as the row's index and ignore duplicate labels
+        df = df.set_index('label',verify_integrity=False)
 
-        # Get fixed center price (middle row in dataframe is df.loc[ 0 , : ])
-        # Fixme: center price = market price and use most recent order size as order size for bar height
-        cp = df.loc[ 0 , : ]['price']
+        # get lowest sell and highest buy from unsorted DataFrame
+        sell_price = df.loc[['sell'],['price']].iloc[0]['price'] # sell_price
+        buy_price = df.loc[['buy'],['price']].iloc[0]['price'] # buy_price
 
-        # Todo: Adjust bar_colors_initial for center price/market price
-        df.at[ 0 , 'bar_colors_initial'] = 'rgba(217,217,217,0.5)'
+        sell_order_size = df.loc[['sell'],['order_size']].iloc[0]['order_size']
+        buy_order_size = df.loc[['buy'],['order_size']].iloc[0]['order_size']
+
+        # calculate center price (same for market_center_price) and center order size
+        cp = round(buy_price * math.sqrt(sell_price / buy_price),3)
+        cp_order_size = round(buy_order_size * math.sqrt(sell_order_size / buy_order_size),3)
+
+        # append cp, cp_order_size and belonging color to the DataFrame
+        df = df.append({'price':cp,'order_size':cp_order_size,
+                        'bar_colors_initial':'rgba(217,217,217,0.5)'},ignore_index=True)
+
+        # sort values in dataframe by price to get mountain type datastructure
+        df = df.sort_values(by=['price'])
 
         # Todo: this may be needed in case the update of storing orders in db is done
         # initial_orders = {}
@@ -203,7 +219,7 @@ def server():
                     font={
                         'color': 'white'
                     },
-                    showlegend=True
+                    showlegend=False
                 )
             ),
             config={
