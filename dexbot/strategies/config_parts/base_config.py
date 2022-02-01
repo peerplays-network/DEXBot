@@ -64,17 +64,17 @@ class BaseConfig:
 
         # Common configs
         base_config = [
-            ConfigElement('account', 'string', '', 'Account', 'Graphene account name for the bot to operate with', ''),
+            ConfigElement('account', 'string', '', 'Account', 'Peerplays account name for the bot to operate with', ''),
             ConfigElement(
                 'market',
                 'string',
-                'GPH/USD',
+                'TEST/USD',
                 'Market',
-                'Graphene market to operate on, in the format QUOTE/BASE, for example \"GPH/USD\"',
+                'Peerplays market to operate on, in the format QUOTE/BASE, for example \"TEST/USD\"',
                 r'[A-Z0-9\.]+[:\/][A-Z0-9\.]+',
             ),
             ConfigElement(
-                'fee_asset', 'string', 'GPH', 'Fee asset', 'Asset to be used to pay transaction fees', r'[A-Z\.]+'
+                'fee_asset', 'string', 'TEST', 'Fee asset', 'Asset to be used to pay transaction fees', r'[A-Z\.]+'
             ),
             ConfigElement(
                 'operational_percent_quote',

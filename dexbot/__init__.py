@@ -1,4 +1,4 @@
 APP_NAME = 'dexbot'
 VERSION = '1.0.0'
-AUTHOR = 'Graphene'
+AUTHOR = 'Peerplays'
 __version__ = VERSION

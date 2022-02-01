@@ -237,9 +237,5 @@ class Config(dict):
     def node_list(self):
         """A pre-defined list of Bitshares nodes."""
         return [
-            "wss://node.gph.ai",
-            "wss://gph.lexai.host",
-            "wss://node.graphenelab.io",
-            "wss://gph-api.xchng.finance",
-            "wss://node.hk.graphene.fans",
+            "wss://ymir.peerplays.download/api",
         ]

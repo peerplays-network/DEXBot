@@ -26,7 +26,7 @@
       <Variable Name="DefaultAllUsersTargetDir" Value="[ProgramFilesFolder]Python[WinVerNoDot]" bal:Overridable="yes" />
       <Variable Name="TargetPlatform" Value="x86" />
     <?endif ?>
-    <Variable Name="LaunchTarget" Value="[ProgramFilesFolder]\Graphene\DEXBot\DEXBot.exe"/>
+    <Variable Name="LaunchTarget" Value="[ProgramFilesFolder]\Peerplays\DEXBot\DEXBot.exe"/>
 
     <Chain>
 
