@@ -1,17 +1,10 @@
 For testing on ymir
 
-
 cd to project directory
 virtualenv -p python3 env
-Add ymir chain id to env/lib/python3.8/site-packages/bitsharesbase/chains.py
-
-    "YMIR": {
-        "chain_id": "7c1c72eb738b3ff1870350f85daca27e2d0f5dd25af27df7475fbd92815e421e",
-        "core_symbol": "TEST",
-        "prefix": "TEST",
-    },
-
 source env/bin/activate
+pip3 install -r requirements.txt
+mv chains.py env/lib/python3.8/site-packages/bitsharesbase/chains.py
 python3 gui.py 
 
 For creating worker
@@ -21,6 +14,14 @@ key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 
 
 # discard below lines
+Add ymir chain id to env/lib/python3.8/site-packages/bitsharesbase/chains.py
+
+    "YMIR": {
+        "chain_id": "7c1c72eb738b3ff1870350f85daca27e2d0f5dd25af27df7475fbd92815e421e",
+        "core_symbol": "TEST",
+        "prefix": "TEST",
+    },
+
 mkdir dexbot-data dexbot-config
 
 docker run -it --rm -v `pwd`/dexbot-data:/home/laptech/.local/share blckchnd/dexbot:latest uptick addkey
