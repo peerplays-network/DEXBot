@@ -1,0 +1,31 @@
+For testing on ymir
+
+
+cd to project directory
+virtualenv -p python3 env
+Add ymir chain id to env/lib/python3.8/site-packages/bitsharesbase/chains.py
+
+    "YMIR": {
+        "chain_id": "7c1c72eb738b3ff1870350f85daca27e2d0f5dd25af27df7475fbd92815e421e",
+        "core_symbol": "TEST",
+        "prefix": "TEST",
+    },
+
+source env/bin/activate
+python3 gui.py 
+
+
+# discard below lines
+mkdir dexbot-data dexbot-config
+
+docker run -it --rm -v `pwd`/dexbot-data:/home/laptech/.local/share blckchnd/dexbot:latest uptick addkey
+
+
+docker run -it --rm -v `pwd`/dexbot-config:/home/laptech/.config/dexbot -v `pwd`/dexbot-data:/home/laptech/.local/share blckchnd/dexbot:latest dexbot-cli configure
+
+
+
+
+docker run -it --rm -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest uptick addkey
+docker run -it --rm -v `pwd`/dexbot-config:/home/dexbot/.config/dexbot -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest dexbot-cli configure
+
