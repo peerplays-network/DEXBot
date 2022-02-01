@@ -235,7 +235,7 @@ class Config(dict):
 
     @property
     def node_list(self):
-        """A pre-defined list of Bitshares nodes."""
+        """A pre-defined list of Peerplays nodes."""
         return [
             "wss://ymir.peerplays.download/api",
         ]
