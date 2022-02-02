@@ -608,7 +608,7 @@
          </size>
         </property>
         <property name="text">
-         <string>GPH</string>
+         <string>TEST</string>
         </property>
        </widget>
       </item>

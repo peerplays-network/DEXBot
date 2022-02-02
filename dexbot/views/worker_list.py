@@ -56,12 +56,12 @@ class MainView(QMainWindow, Ui_MainWindow):
         # Check if there is already a connection
         if self.config['node']:
             # Test nodes first. This only checks if we're able to connect
-            self.status_bar.showMessage('Connecting to Graphene...')
+            self.status_bar.showMessage('Connecting to Peerplays...')
             try:
                 self.main_controller.measure_latency(self.config['node'])
             except NumRetriesReached:
                 self.status_bar.showMessage(
-                    'ver {} - Coudn\'t connect to Graphene. '
+                    'ver {} - Coudn\'t connect to Peerplays. '
                     'Please use different node(s) and retry.'.format(__version__)
                 )
                 self.main_controller.set_bitshares_instance(None)
@@ -166,7 +166,7 @@ class MainView(QMainWindow, Ui_MainWindow):
     @staticmethod
     @pyqtSlot(name='handle_open_documentation')
     def handle_open_documentation():
-        webbrowser.open('https://github.com/graphene-blockchain/DEXBot/wiki')
+        webbrowser.open('https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/home')
 
     def set_worker_name(self, worker_name, value):
         self.worker_widgets[worker_name].set_worker_name(value)
