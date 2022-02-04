@@ -235,20 +235,7 @@ class Config(dict):
 
     @property
     def node_list(self):
-        """A pre-defined list of Bitshares nodes."""
+        """A pre-defined list of Peerplays nodes."""
         return [
-            "wss://bitshares.openledger.info/ws",
-            "wss://openledger.hk/ws",
-            "wss://na.openledger.info/ws",
-            "wss://ws.gdex.top",
-            "wss://api.bts.ai",
-            "wss://api-ru.bts.blckchnd.com",
-            "wss://bts-seoul.clockwork.gr",
-            "wss://btsfullnode.bangzi.info/ws",
-            "wss://api.fr.bitsharesdex.com",
-            "wss://btsws.roelandp.nl/ws",
-            "wss://kc-us-dex.xeldal.com/ws",
-            "wss://dallas.us.api.bitshares.org/ws",
-            "wss://siliconvalley.us.api.bitshares.org/ws",
-            "wss://toronto.ca.api.bitshares.org/ws",
+            "wss://ymir.peerplays.download/api",
         ]
