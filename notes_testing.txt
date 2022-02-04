@@ -1,6 +1,7 @@
 For testing on ymir
 
 cd to project directory
+git checkout wip-2
 virtualenv -p python3 env
 source env/bin/activate
 pip3 install -r requirements.txt
