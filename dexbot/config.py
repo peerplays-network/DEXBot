@@ -235,25 +235,7 @@ class Config(dict):
 
     @property
     def node_list(self):
-        """A pre-defined list of Bitshares nodes."""
+        """A pre-defined list of Peerplays nodes."""
         return [
-            "wss://nexus01.co.uk/ws",
-            "wss://dex.iobanker.com/ws",
-            "wss://ws.gdex.top",
-            "wss://api.weaccount.cn",
-            "wss://api.bts.mobi/ws",
-            "wss://btsws.roelandp.nl/ws",
-            "wss://api.bitshares.bhuz.info/ws",
-            "wss://api.btsgo.net/ws",
-            "wss://bts.open.icowallet.net/ws",
-            "wss://api.61bts.com",
-            "wss://api.dex.trading/",
-            "wss://api-bts.liondani.com/ws",
-            "wss://public.xbts.io/ws",
-            "wss://cloud.xbts.io/ws",
-            "wss://node.xbts.io/ws",
-            "wss://api.gbacenter.org/ws",
-            "wss://singapore.bitshares.im/ws",
-            "wss://newyork.bitshares.im/ws",
-            "wss://api.iamredbar.com/ws",
+            "wss://ymir.peerplays.download/api",
         ]
