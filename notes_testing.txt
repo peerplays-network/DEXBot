@@ -1,0 +1,39 @@
+For testing on ymir
+
+git clone https://gitlab.com/PBSA/tools-libs/DEXBot
+cd DEXBot
+git checkout devel
+virtualenv -p python3 env
+source env/bin/activate
+pip3 install -r requirements.txt
+mv chains.py env/lib/python3.8/site-packages/bitsharesbase/chains.py
+python3 gui.py 
+
+For creating worker
+user TEST and BTC assets
+accountname: init0
+key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 
+
+
+# discard below lines
+Add ymir chain id to env/lib/python3.8/site-packages/bitsharesbase/chains.py
+
+    "YMIR": {
+        "chain_id": "7c1c72eb738b3ff1870350f85daca27e2d0f5dd25af27df7475fbd92815e421e",
+        "core_symbol": "TEST",
+        "prefix": "TEST",
+    },
+
+mkdir dexbot-data dexbot-config
+
+docker run -it --rm -v `pwd`/dexbot-data:/home/laptech/.local/share blckchnd/dexbot:latest uptick addkey
+
+
+docker run -it --rm -v `pwd`/dexbot-config:/home/laptech/.config/dexbot -v `pwd`/dexbot-data:/home/laptech/.local/share blckchnd/dexbot:latest dexbot-cli configure
+
+
+
+
+docker run -it --rm -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest uptick addkey
+docker run -it --rm -v `pwd`/dexbot-config:/home/dexbot/.config/dexbot -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest dexbot-cli configure
+

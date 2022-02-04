@@ -23,11 +23,14 @@ class MainController:
 
         # Configure logging
         data_dir = user_data_dir(APP_NAME, AUTHOR)
+        print("data_dir:", data_dir)
         filename = os.path.join(data_dir, 'dexbot.log')
         formatter = logging.Formatter(
             '%(asctime)s - %(worker_name)s using account %(account)s on %(market)s - %(levelname)s - %(message)s'
         )
         logger = logging.getLogger("dexbot.per_worker")
+        filename = "dexbot.log"
+        print("filename:", filename)
         fh = logging.FileHandler(filename)
         fh.setFormatter(formatter)
         logger.addHandler(fh)

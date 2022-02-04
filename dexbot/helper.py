@@ -66,6 +66,7 @@ def initialize_orders_log():
     formatter = logging.Formatter('%(message)s')
     logger = logging.getLogger("dexbot.orders_log")
 
+    filename = "dexbot.log"
     file_handler = logging.FileHandler(filename)
     file_handler.setFormatter(formatter)
 

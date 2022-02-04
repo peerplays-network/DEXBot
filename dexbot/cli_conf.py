@@ -157,7 +157,7 @@ def setup_systemd(whiptail, config):
         path = os.path.expanduser(path)
         pathlib.Path(path).mkdir(parents=True, exist_ok=True)
         password = whiptail.prompt(
-            "The uptick wallet password\n"
+            "The Peerplays wallet password\n"
             "NOTE: this will be saved on disc so the worker can run unattended. "
             "This means anyone with access to this computer's files can spend all your money",
             password=True,
@@ -294,9 +294,9 @@ def configure_dexbot(config, ctx):
                     ('NEW', 'Create a new worker'),
                     ('EDIT', 'Edit a worker'),
                     ('DEL_WORKER', 'Delete a worker'),
-                    ('ADD', 'Add a bitshares account'),
-                    ('DEL_ACCOUNT', 'Delete a bitshares account'),
-                    ('SHOW', 'Show bitshares accounts'),
+                    ('ADD', 'Add a Peerplays account'),
+                    ('DEL_ACCOUNT', 'Delete a Peerplays account'),
+                    ('SHOW', 'Show Peerplays accounts'),
                     ('NODES', 'Edit Node Selection'),
                     ('ADD_NODE', 'Add Your Node'),
                     ('SORT_NODES', 'By latency (uses default list)'),
@@ -358,11 +358,11 @@ def configure_dexbot(config, ctx):
             elif action == 'SHOW':
                 account_list = list_accounts(bitshares_instance)
                 if account_list:
-                    action = whiptail.menu("Bitshares Account List (Name - Type)", account_list)
+                    action = whiptail.menu("Peerplays Account List (Name - Type)", account_list)
                 else:
-                    whiptail.alert('You do not have any bitshares accounts in the wallet')
+                    whiptail.alert('You do not have any Peerplays accounts in the wallet')
             elif action == 'ADD_NODE':
-                txt = whiptail.prompt("Your name for the new node: e.g. wss://dexnode.net/ws")
+                txt = whiptail.prompt("Your name for the new node: e.g. wss://ymir.peerplays.download/api")
                 # Insert new node on top of the list
                 config['node'].insert(0, txt)
             elif action == 'NODES':
@@ -387,7 +387,7 @@ def configure_dexbot(config, ctx):
                 # delete node permanently from config
                 setup_systemd(whiptail, config)
             elif action == 'HELP':
-                whiptail.alert("Please see https://github.com/Codaone/DEXBot/wiki")
+                whiptail.alert("Please see https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/home")
 
     whiptail.clear()
     return config
