@@ -12,7 +12,7 @@ python3 gui.py
 For creating worker
 user TEST and BTC assets
 accountname: init0
-key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 
+key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
 
 
 # discard below lines
