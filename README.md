@@ -1,9 +1,5 @@
 # DEXBot
 
-[![Build Status (master)](https://travis-ci.org/graphene-blockchain/DEXBot.svg?branch=graphene)](https://travis-ci.org/graphene-blockchain/DEXBot)
-[![Documentation
-Status](https://readthedocs.org/projects/dexbot/badge/?version=latest)](https://dexbot.readthedocs.io/en/latest/?badge=latest)
-
 **Download the latest release for Windows, OSX and Linux from [here!](https://gitlab.com/PBSA/tools-libs/DEXBot/-/tree/wip-2)
 
 The Dashboard of the GUI version of DEXBot: ![GUI](https://i.imgur.com/dc2FYum.png)
