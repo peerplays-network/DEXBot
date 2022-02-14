@@ -21,7 +21,6 @@ If you properly predict future market conditions, you can manage to make profit.
 
 ## Installing and running the software
 
-See instructions in the [Wiki](https://github.com/graphene-blockchain/DEXBot/wiki) for [Linux](https://github.com/graphene-blockchain/DEXBot/wiki/Setup-Guide-for-Linux), [Windows](https://github.com/graphene-blockchain/DEXBot/wiki/Setup-Guide-for-Windows), [OSX](https://github.com/graphene-blockchain/DEXBot/wiki/Setup-Guide-for-Mac-OS-X). [Raspberry Pi](https://github.com/graphene-blockchain/DEXBot/wiki/Setup-guide-for-Raspberry-Pi). Other users can try downloading the package or following the Linux guide.
 
 **Warning**: This is highly experimental code! Use at your OWN risk!
 
@@ -51,8 +50,6 @@ docker run -d --name dexbot -e UNLOCK=/run/secrets/passphrase -v `pwd`/dexbot-co
 
 ## Getting help
 
-Join the [Telegram Chat for DEXBot Graphene](https://t.me/graphene_dex).
-
 ## Contributing
 
 Install the software, use it and report any problems by creating a ticket.
@@ -63,9 +60,6 @@ Before commiting any changes first time, make sure to install pre-commit hooks!
 pip install -r requirements-dev.txt
 pre-commit install
 ```
-
-* [New Contributors Guide](https://github.com/graphene-blockchain/DEXBot/wiki/New-Contributors-Guide)
-* [Git Workflow](https://github.com/graphene-blockchain/DEXBot/wiki/Git-Workflow)
 
 # IMPORTANT NOTE
 
