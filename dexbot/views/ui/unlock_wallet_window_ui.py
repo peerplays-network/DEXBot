@@ -79,7 +79,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "DEXBot - Unlock wallet"))
-        self.helper_text.setText(_translate("Dialog", "Please enter your Uptick wallet password before continuing."))
-        self.password_label.setText(_translate("Dialog", "Uptick Wallet password"))
+        self.helper_text.setText(_translate("Dialog", "Please enter your Peerplays wallet password before continuing."))
+        self.password_label.setText(_translate("Dialog", "Peerplays Wallet password"))
         self.ok_button.setText(_translate("Dialog", "OK"))
 
