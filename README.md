@@ -16,12 +16,6 @@ If you properly predict future market conditions, you can manage to make profit.
 
 The installation instructions and strategies are discussed [here](https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/Documentation-DEXBot).
 
-## Running
-
-
-
-## Getting help
-
 ## Contributing
 
 Install the software, use it and report any problems by creating a ticket.
