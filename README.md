@@ -1,7 +1,5 @@
 # DEXBot
 
-**Download the latest release for Windows, OSX and Linux from [here!](https://gitlab.com/PBSA/tools-libs/DEXBot/-/tree/master)
-
 A Trading Bot provided with three very flexible Market Making strategies. Works on Peerplays. Can be customized with additional strategies written in Python3.
 
 DEXBot can be installed from source or by using the excecutable packages for Windows, OSX, and Linux. Packages include the GUI version, but installation from source provides also the CLI version, which can be used on headless servers and Raspberry Pi's.
@@ -16,29 +14,11 @@ If you properly predict future market conditions, you can manage to make profit.
 
 **Warning**: This is highly experimental code! Use at your OWN risk!
 
-## Running in docker
+The installation instructions and strategies are discussed [here](https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/Documentation-DEXBot).
 
-By default, local data is stored inside docker volumes. To avoid loosing configs and data, it's advised to mount custom
-directories inside the container as shown below.
+## Running
 
-```
-mkdir dexbot-data dexbot-config
-docker run -it --rm -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest uptick addkey
-docker run -it --rm -v `pwd`/dexbot-config:/home/dexbot/.config/dexbot -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest dexbot-cli configure
-```
 
-To run in unattended mode you need to provide wallet passphrase:
-
-```
-docker run -d --name dexbot -e UNLOCK=pass -v `pwd`/dexbot-config:/home/dexbot/.config/dexbot -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest dexbot-cli run
-```
-
-Assuming you have created a Docker secret named "passphrase" in your swarm, you can also get it from there:
-
-```
-printf <pass> | docker secret create passphrase -
-docker run -d --name dexbot -e UNLOCK=/run/secrets/passphrase -v `pwd`/dexbot-config:/home/dexbot/.config/dexbot -v `pwd`/dexbot-data:/home/dexbot/.local/share blckchnd/dexbot:latest dexbot-cli run
-```
 
 ## Getting help
 
