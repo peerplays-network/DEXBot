@@ -392,7 +392,7 @@ class Ui_Dialog(object):
         self.fee_asset_label.setText(_translate("Dialog", "Fee asset"))
         self.fee_asset_tooltip.setToolTip(_translate("Dialog", "Asset to be used to pay transaction fees"))
         self.fee_asset_tooltip.setText(_translate("Dialog", "?"))
-        self.fee_asset_input.setText(_translate("Dialog", "BTS"))
+        self.fee_asset_input.setText(_translate("Dialog", "TEST"))
         self.operational_quote_label.setText(_translate("Dialog", "Operational QUOTE"))
         self.operational_quote_tooltip.setToolTip(_translate("Dialog", "Max % of QUOTE asset available to this worker, 0 - auto"))
         self.operational_quote_tooltip.setText(_translate("Dialog", "?"))

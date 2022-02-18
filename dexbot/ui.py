@@ -130,9 +130,9 @@ def unlock(f):
                 else:
                     if systemd:
                         # No user available to interact with
-                        log.critical("Uptick Passphrase not available, exiting")
+                        log.critical("Peerplays Wallet Passphrase not available, exiting")
                         sys.exit(78)  # 'configuration error' in sysexits.h
-                    pwd = click.prompt("Current Uptick Wallet Passphrase", hide_input=True)
+                    pwd = click.prompt("Current Peerplays Wallet Passphrase", hide_input=True)
                 try:
                     ctx.bitshares.wallet.unlock(pwd)
                 except WrongMasterPasswordException:
@@ -141,14 +141,14 @@ def unlock(f):
             else:
                 if systemd:
                     # No user available to interact with
-                    log.critical("Uptick Wallet not installed, cannot run")
+                    log.critical("Peerplays Wallet not installed, cannot run")
                     sys.exit(78)
                 click.echo(
-                    "No Uptick wallet installed yet. \n"
+                    "No Peerplays wallet installed yet. \n"
                     + "This is a password for encrypting "
                     + "the file that contains your private keys.  Creating ..."
                 )
-                pwd = click.prompt("Uptick Wallet Encryption Passphrase", hide_input=True, confirmation_prompt=True)
+                pwd = click.prompt("Peerplays Wallet Encryption Passphrase", hide_input=True, confirmation_prompt=True)
                 ctx.bitshares.wallet.create(pwd)
         return ctx.invoke(f, *args, **kwargs)
 

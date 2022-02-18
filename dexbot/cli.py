@@ -160,10 +160,10 @@ def configure(ctx):
 @unlock
 def cancel(ctx, market, account):
     """
-    Cancel Orders in Mkt, (Eg: cancel USD/BTS --account name)
+    Cancel Orders in Mkt, (Eg: cancel USD/TEST --account name)
 
     :param ctx: context
-    :param market: market e.g. USD/BTS
+    :param market: market e.g. USD/TEST
     :param account: name of your bitshares acct
     :return: Success or Fail message
     """
