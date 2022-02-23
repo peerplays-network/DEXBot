@@ -178,7 +178,7 @@ class Config(dict):
         :return: defaultdict instance representing dict with intersections
 
         The goal of calculating assets intersections is to be able to use single account on multiple workers and
-        trade some common assets. For example, trade TEST/USD, BTC/TEST, ETH/BTC markets on same account.
+        trade some common assets. For example, trade PPY/USD, BTC/PPY, ETH/BTC markets on same account.
 
         Configuration variable `operational_percent_xxx` defines what percent of total account balance should be
         available for the worker. It may be set or omitted.
