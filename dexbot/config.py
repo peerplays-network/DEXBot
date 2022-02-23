@@ -178,7 +178,7 @@ class Config(dict):
         :return: defaultdict instance representing dict with intersections
 
         The goal of calculating assets intersections is to be able to use single account on multiple workers and
-        trade some common assets. For example, trade TEST/USD, BTC/TEST, ETH/BTC markets on same account.
+        trade some common assets. For example, trade PPY/USD, BTC/PPY, ETH/BTC markets on same account.
 
         Configuration variable `operational_percent_xxx` defines what percent of total account balance should be
         available for the worker. It may be set or omitted.
@@ -237,5 +237,10 @@ class Config(dict):
     def node_list(self):
         """A pre-defined list of Peerplays nodes."""
         return [
-            "wss://ymir.peerplays.download/api",
+            # "wss://ymir.peerplays.download/api",
+            'ws://96.46.48.98:18090',
+            'wss://peerplaysblockchain.net/mainnet/api',
+            'ws://witness.serverpit.com:8090',
+            'wss://api.i9networks.net.br',
+            'wss://node.mainnet.peerblock.trade'
         ]

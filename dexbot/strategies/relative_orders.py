@@ -152,8 +152,8 @@ class Strategy(StrategyBase):
         :param float | manual_offset:
         :return: Center price with manual offset
 
-        Adjust center price by given percent in symmetrical way. Thus, -1% adjustement on TEST:USD market will be
-        same as adjusting +1% on USD:TEST market.
+        Adjust center price by given percent in symmetrical way. Thus, -1% adjustement on PPY:USD market will be
+        same as adjusting +1% on USD:PPY market.
         """
         if manual_offset < 0:
             return center_price / (1 + abs(manual_offset))

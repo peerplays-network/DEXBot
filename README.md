@@ -14,7 +14,26 @@ If you properly predict future market conditions, you can manage to make profit.
 
 **Warning**: This is highly experimental code! Use at your OWN risk!
 
-The installation instructions and strategies are discussed [here](https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/Documentation-DEXBot).
+```
+git clone https://gitlab.com/PBSA/tools-libs/DEXBot
+cd DEXBot
+git checkout devel
+virtualenv -p python3 env
+source env/bin/activate
+pip3 install -r requirements.txt
+cp chains.py env/lib/python3.8/site-packages/bitsharesbase/chains.py
+python3 gui.py 
+```
+
+For creating worker for test purpose
+```
+accountname: init0
+key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+```
+
+## Strategies
+
+The strategies are discussed [here](https://gitlab.com/PBSA/tools-libs/DEXBot/-/wikis/Documentation-DEXBot).
 
 ## Contributing
 

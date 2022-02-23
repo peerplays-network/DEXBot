@@ -68,13 +68,13 @@ class BaseConfig:
             ConfigElement(
                 'market',
                 'string',
-                'TEST/USD',
+                'PPY/USD',
                 'Market',
-                'Peerplays market to operate on, in the format QUOTE/BASE, for example \"TEST/USD\"',
+                'Peerplays market to operate on, in the format QUOTE/BASE, for example \"PPY/USD\"',
                 r'[A-Z0-9\.]+[:\/][A-Z0-9\.]+',
             ),
             ConfigElement(
-                'fee_asset', 'string', 'TEST', 'Fee asset', 'Asset to be used to pay transaction fees', r'[A-Z\.]+'
+                'fee_asset', 'string', 'PPY', 'Fee asset', 'Asset to be used to pay transaction fees', r'[A-Z\.]+'
             ),
             ConfigElement(
                 'operational_percent_quote',
