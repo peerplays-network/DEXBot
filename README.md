@@ -33,11 +33,6 @@ cp chains.py env/lib/python3.8/site-packages/bitsharesbase/chains.py
 python3 gui.py 
 ```
 
-For creating worker for test purpose
-```
-accountname: init0
-key: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
-```
 
 ## Strategies
 
