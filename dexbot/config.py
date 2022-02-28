@@ -238,9 +238,9 @@ class Config(dict):
         """A pre-defined list of Peerplays nodes."""
         return [
             # "wss://ymir.peerplays.download/api",
-            'ws://96.46.48.98:18090',
             'wss://peerplaysblockchain.net/mainnet/api',
             'ws://witness.serverpit.com:8090',
             'wss://api.i9networks.net.br',
+            'ws://96.46.48.98:18090',
             'wss://node.mainnet.peerblock.trade'
         ]
