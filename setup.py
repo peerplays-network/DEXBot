@@ -48,7 +48,7 @@ setup(
     cmdclass=cmd_class,
     entry_points={'console_scripts': console_scripts},
     install_requires=[
-        "pyqt5==5.10",
+        "pyqt5==5.9",
         "pyqt-distutils==0.7.3",
         "pyinstaller==3.4",
         "click-datetime==0.2",
