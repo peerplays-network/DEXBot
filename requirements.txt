@@ -2,7 +2,7 @@ pyqt5==5.10
 pyqt-distutils==0.7.3
 pyinstaller==3.4
 click-datetime==0.2
-aiohttp==3.7.4
+aiohttp==3.8.5
 requests==2.22.0
 yarl==1.6.3
 ccxt==1.58.17
